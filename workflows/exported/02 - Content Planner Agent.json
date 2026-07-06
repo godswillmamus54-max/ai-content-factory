@@ -1,0 +1,121 @@
+{
+  "name": "02 - Content Planner Agent",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "91d67f39-8f4d-458a-b705-e273f8ba1245",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "72251d99-2447-4419-ad98-abe377f693f3",
+      "name": "When chat message received",
+      "webhookId": "63e85839-421a-4280-bfba-46e5183e2d33"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Create a 7-day publishing plan for an AI & Automation content page.\n\nGenerate one content idea per day.\n\nFor each day include:\n\n- Day\n- Content Title\n- Platform\n- Content Format\n- Posting Time\n- Priority\n- CTA\n- Reason for scheduling\n\nReturn clean structured data.",
+        "options": {
+          "systemMessage": "You are the Content Planner Agent for the AI Content Operating System.\n\nYour role is to transform research ideas into a strategic publishing plan.\n\nFor every content idea:\n\n- Assign a priority (High, Medium, Low)\n- Select the best platform\n- Choose the best content format\n- Recommend the best posting day\n- Recommend the best posting time\n- Suggest a compelling call-to-action\n- Group related ideas into a content series when appropriate.\n\nOptimize for audience growth, engagement, consistency and long-term value.\n\nAlways think like an experienced social media strategist."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "9703c380-5375-460a-8fab-d3e2d9e5735b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        416,
+        176
+      ],
+      "id": "2872a353-373c-47ee-b698-9dc9cc318036",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "vxxCnIIa2OdPjFCY",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "329ba989-c918-4f27-98bc-48052be05ccf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6762a99ca418df9650f42c0679690cd49be354b3114b3f86bc2f34e76440572d"
+  },
+  "id": "mHQ77pALJcssZtzt",
+  "tags": []
+}
