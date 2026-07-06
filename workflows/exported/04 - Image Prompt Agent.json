@@ -1,0 +1,119 @@
+{
+  "name": "04 - Image Prompt Agent",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8a96e214-2b9d-4cb1-9d6f-9aa79860a4e2",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2f500fd2-073d-44ca-844a-9cbcc67a2a68",
+      "name": "When chat message received",
+      "webhookId": "7af79737-0716-4b0a-91e2-787c3faa1447"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are the Image Prompt Agent for an AI Content Factory.\n\nYour job is to convert social media content into professional AI image prompts.\n\nFor every piece of content:\n\n- Create one highly detailed image prompt.\n- The prompt should work well with modern AI image models.\n- The image should be visually engaging and suitable for social media.\n- Avoid text inside the image unless explicitly requested.\n- Describe lighting, composition, colors, style, and subject clearly.\n- Use a clean, modern, professional aesthetic.\n\nReturn ONLY valid JSON.\n\nStructure:\n\n{\n  \"imagePrompt\": \"\",\n  \"style\": \"\",\n  \"aspectRatio\": \"1:1\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "da6363b6-87e7-4f02-9269-da554a9dbb25",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        400,
+        176
+      ],
+      "id": "1350f395-7821-40e9-bde3-34cf16bb53c4",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "vxxCnIIa2OdPjFCY",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "6cc45bf6-bf23-4ed3-a796-2c59da0a069a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6762a99ca418df9650f42c0679690cd49be354b3114b3f86bc2f34e76440572d"
+  },
+  "id": "nRGgQTJcKgekcccU",
+  "tags": []
+}
