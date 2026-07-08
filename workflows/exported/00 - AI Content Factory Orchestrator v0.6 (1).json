@@ -1,0 +1,469 @@
+{
+  "name": "00 - AI Content Factory Orchestrator v0.6",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a50a1fc8-e56b-4acd-bb7a-1a5a76ee76ef",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "32f558d7-5f75-4667-bbb3-bdfd7a9185ae",
+      "name": "When chat message received",
+      "webhookId": "3e51e3c7-e416-4dfd-9ef0-933cb5267330"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1dId1ZHw1HldmhUgAom8j_BgGhkVhJ6KhcBdN8_6fsTA",
+          "mode": "list",
+          "cachedResultName": "AI Content Factory Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dId1ZHw1HldmhUgAom8j_BgGhkVhJ6KhcBdN8_6fsTA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Content Library",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dId1ZHw1HldmhUgAom8j_BgGhkVhJ6KhcBdN8_6fsTA/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ $now }}",
+            "Topic": "={{ $json.topic }}",
+            "Platform": "={{ $json.platform }}",
+            "Title": "={{ $json.title }}",
+            "Hook": "={{ $json.hook }}",
+            "Content": "={{ $json.content }}",
+            "CTA": "={{ $json.cta }}",
+            "Hashtags": "={{ Array.isArray($json.hashtags) ? $json.hashtags.join(\", \") : $json.hashtags }}",
+            "Image Prompt": "={{ $json.imagePrompt }}",
+            "Video Prompt": "={{ $json.videoPrompt }}",
+            "Status": "={{ $json.status }}",
+            "Image URL": "={{$json.webViewLink}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Topic",
+              "displayName": "Topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Platform",
+              "displayName": "Platform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hook",
+              "displayName": "Hook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Content",
+              "displayName": "Content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "CTA",
+              "displayName": "CTA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hashtags",
+              "displayName": "Hashtags",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Image Prompt",
+              "displayName": "Image Prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Video Prompt",
+              "displayName": "Video Prompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Image URL",
+              "displayName": "Image URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1312,
+        -80
+      ],
+      "id": "ccd94a98-bd6f-437f-8885-cbaa1f64c687",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "6WyJ9TZLgC5JtOs2",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "akpqOND0nBUE09ce",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/akpqOND0nBUE09ce",
+          "cachedResultName": "AI-COS v0.3 - Research Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        432,
+        -16
+      ],
+      "id": "96b1b4fa-3c6c-4324-ab90-149853772f1b",
+      "name": "Call 'AI-COS v0.3 - Research Agent'"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "mHQ77pALJcssZtzt",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/mHQ77pALJcssZtzt",
+          "cachedResultName": "02 - Content Planner Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        448,
+        -176
+      ],
+      "id": "aa95bf93-606f-479c-af06-7a855bb00df8",
+      "name": "Call '02 - Content Planner Agent'"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "nRGgQTJcKgekcccU",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/nRGgQTJcKgekcccU",
+          "cachedResultName": "04 - Image Prompt Optimizer"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        688,
+        80
+      ],
+      "id": "42f2500c-06d2-4d25-940a-ae0ff810c7ac",
+      "name": "Call '04 - Image Prompt Agent'"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "2fgMr0DbkLvzQp3y",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/2fgMr0DbkLvzQp3y",
+          "cachedResultName": "05 - Image Generator"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        912,
+        112
+      ],
+      "id": "64d54b45-495b-479e-92d9-d322e2b98337",
+      "name": "Call '05 - Image Generator'"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {
+          "includeUnpaired": true
+        }
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1072,
+        -80
+      ],
+      "id": "47986688-2e59-4fb0-904b-44b147555e4f",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "NAMT4VlELaD7FGXd",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/NAMT4VlELaD7FGXd",
+          "cachedResultName": "03 - Content Writer Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        688,
+        -176
+      ],
+      "id": "3e8f689f-e769-4aad-a2cb-459609d14150",
+      "name": "Call '03 - Content Writer Agent"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Call 'AI-COS v0.3 - Research Agent'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Call 'AI-COS v0.3 - Research Agent'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'AI-COS v0.3 - Research Agent'": {
+      "main": [
+        [
+          {
+            "node": "Call '02 - Content Planner Agent'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call '02 - Content Planner Agent'": {
+      "main": [
+        [
+          {
+            "node": "Call '03 - Content Writer Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call '04 - Image Prompt Agent'": {
+      "main": [
+        [
+          {
+            "node": "Call '05 - Image Generator'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call '05 - Image Generator'": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call '03 - Content Writer Agent": {
+      "main": [
+        [
+          {
+            "node": "Call '04 - Image Prompt Agent'",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "325ef211-d992-430b-968e-9491ecdb260f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6762a99ca418df9650f42c0679690cd49be354b3114b3f86bc2f34e76440572d"
+  },
+  "id": "WnctC46Oj9xkay7e",
+  "tags": []
+}
