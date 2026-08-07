@@ -1,0 +1,19 @@
+
+### One important change I made
+
+I deliberately **didn't claim that YouTube/TikTok/Instagram publishing is already implemented**. They're now under the roadmap because your original README says those are future items.
+
+Likewise, I separated:
+
+**Completed → In Progress → Roadmap**
+
+That makes the repository much more credible to a technical reviewer because they can immediately distinguish what you've actually built from what you're planning.
+
+### Next action
+
+Update `README.md`, then from your **`ai-content-factory` repository folder** run:
+
+```powershell
+git add README.md
+git commit -m "docs: polish AI Content Factory README"
+git push origin main
