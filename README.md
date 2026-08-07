@@ -1,94 +1,135 @@
 # 🚀 AI Content Factory
 
-An AI-powered content production pipeline built with **n8n**, **Docker**, **REST APIs**, and modern AI models.
+An end-to-end AI content production and workflow automation platform built with **n8n, Docker, REST APIs, AI models, and Google Sheets**.
 
-The system automates the creation of social media content, images, videos, documents, and publishing workflows from a single orchestration workflow.
+AI Content Factory is designed to orchestrate the creation, processing, storage, and publishing of digital content through modular automation workflows.
 
----
-
-# Features
-
-✅ AI Image Generation
-
-✅ AI Video Generation
-
-✅ AI Prompt Engineering
-
-✅ Workflow Automation using n8n
-
-✅ Docker Deployment
-
-✅ Ubuntu Self Hosting
-
-✅ Google Sheets Integration
-
-✅ REST API Integration
-
-✅ AI Agent Orchestration
-
-✅ Multi-workflow Architecture
+The system brings multiple AI-powered capabilities together under a centralized workflow architecture.
 
 ---
 
-# System Architecture
+## 🎯 Project Overview
 
+AI Content Factory is an automation platform designed to reduce the manual work involved in producing digital content.
+
+Instead of managing image generation, video generation, content planning, prompt engineering, file processing, storage, and publishing independently, the platform coordinates these processes through **n8n workflows and API integrations**.
+
+The project is built around a modular architecture so individual AI capabilities can be developed, tested, and extended independently.
+
+---
+
+## ✨ Key Features
+
+- 🤖 AI agent orchestration
+- 📝 AI content generation
+- 🎨 AI image generation
+- 🎬 AI video generation
+- 🧠 AI prompt engineering
+- ⚙️ n8n workflow automation
+- 🔗 REST API integrations
+- 📊 Google Sheets integration
+- 🐳 Docker-based deployment
+- 🐧 Ubuntu self-hosting
+- 📁 Binary file processing
+- 🔄 Multi-workflow architecture
+- 🗂️ Prompt management
+- 🛠️ Error handling and workflow debugging
+- 📦 Generated media management
+
+---
+
+# 🏗️ System Architecture
+
+The platform uses a centralized orchestration model where a master workflow coordinates specialized AI workflows.
+
+```text
+                              USER
+                                │
+                                ▼
+                       MASTER ORCHESTRATOR
+                                │
+              ┌─────────────────┼─────────────────┐
+              │                 │                 │
+              ▼                 ▼                 ▼
+         CONTENT AI         IMAGE AI          VIDEO AI
+              │                 │                 │
+              └─────────────────┼─────────────────┘
+                                │
+                                ▼
+                       FILE PROCESSING
+                                │
+                                ▼
+                     STORAGE / DATA LAYER
+                                │
+                         Google Sheets
+                                │
+                                ▼
+                          PUBLISHING
 ```
-               User
-                 │
-                 ▼
-         Master Orchestrator
-                 │
-      ┌──────────┼──────────┐
-      ▼          ▼          ▼
- Image AI     Video AI    Content AI
-      │          │          │
-      └──────────┼──────────┘
-                 ▼
-         Storage / Google Sheets
-                 ▼
-            Publishing
-```
 
 ---
 
-# Tech Stack
+# 🧰 Technology Stack
 
 | Technology | Purpose |
 |------------|---------|
-| n8n | Workflow Automation |
-| Docker | Self Hosting |
-| Ubuntu Linux | Server |
-| REST APIs | AI Integrations |
+| n8n | Workflow orchestration and automation |
+| Docker | Containerized deployment |
+| Ubuntu Linux | Self-hosted infrastructure |
+| REST APIs | External service and AI integrations |
 | Git | Version Control |
-| GitHub | Repository |
+| GitHub | Source control and project documentation |
 | FAL AI | Image & Video Generation |
-| Google Sheets | Content Database |
+| Google Sheets | Content and workflow data management |
 
 ---
 
-# Project Structure
+# 📁 Project Structure
 
 ```
 AI-Content-Factory/
-
+│
 ├── assets/
-├── docs/
-├── generated/
-├── prompts/
-├── workflows/
-├── screenshots/
+│   └── Project assets and supporting resources
+│
 ├── configs/
-├── logs/
+│   └── Configuration files
+│
 ├── database/
-├── README.md
-├── ROADMAP.md
+│   └── Local database and structured data
+│
+├── docs/
+│   └── Project documentation and technical references
+│
+├── generated/
+│   └── Generated content and media
+│
+├── logs/
+│   └── Workflow and application logs
+│
+├── prompts/
+│   └── Reusable AI prompts and prompt templates
+│
+├── screenshots/
+│   └── Project and workflow screenshots
+│
+├── workflows/
+│   └── Exported n8n workflows
+│
+├── .env.example
+├── .gitignore
 ├── CHANGELOG.md
-└── PROJECT_STANDARDS.md
+├── LICENSE
+├── PROJECT_STANDARDS.md
+├── README.md
+└── ROADMAP.md
 ```
 
 ---
 
-# Current Workflows
+# ⚙️ Current Workflows
+
+The repository currently contains workflows for:
 
 - AI Content Planner
 - AI Image Generator
@@ -100,11 +141,11 @@ AI-Content-Factory/
 
 ---
 
-# Current Progress
+# 📈 Current Development Status
 
 ✅ Docker Environment
 
-✅ n8n Self Hosted
+✅ Self-hosted n8n environment
 
 ✅ AI Image Generation
 
@@ -112,65 +153,121 @@ AI-Content-Factory/
 
 ✅ Binary File Processing
 
-✅ API Integration
+✅ REST API integration
 
-🔄 Automated Video Assembly
+✅ Google Sheets integration
 
-🔄 Social Media Publishing
+✅ Prompt management
+
+✅ Modular workflow architecture
+
+🔄 Automated video assembly
+
+🔄 Automated publishing workflows
+
+🔄 Automated publishing workflows
 
 ---
 
-# Lessons Learned
-
-This project involved solving real engineering challenges including:
+# 🧪 Engineering Challenges
 
 - Docker container management
-- Binary data handling
 - Linux file permissions
+- Binary data handling
 - REST API integration
 - AI workflow orchestration
 - Large media processing
-- Error handling
-- Production debugging
+- Workflow error handling
+- API debugging
+- Multi-workflow coordination
+- Structured content management
+- Self-hosted automation infrastructure
+
 
 ---
 
-# Roadmap
+# 🗺️ Roadmap
 
+## Content & Media
 - [ ] Automatic video merging with FFmpeg
 - [ ] Voice generation
-- [ ] Caption generation
-- [ ] YouTube publishing
+- [ ] Automated caption generation
+- [ ] Advanced media processing
+
+## Publishing
 - [ ] TikTok publishing
 - [ ] Instagram publishing
+- [ ] YouTube publishing
+- [ ] Additional social media integrations
+
+## Analytics
+- [ ] Content performance tracking
 - [ ] Analytics dashboard
+- [ ] Workflow execution analytics
+
+## Platform
 - [ ] Multi-user support
+- [ ] Improved workflow monitoring
+- [ ] Additional AI providers
+- [ ] Expanded automation modules
 
 ---
 
-# Screenshots
+# 📸 Screenshots
 
-Coming Soon
+Project screenshots and workflow demonstrations are available in:
+
+/screenshots
+
+Additional architecture diagrams and technical documentation are available in:
+
+/docs
 
 ---
 
-# Documentation
+# 📚 Documentation
 
-Additional documentation can be found inside the `/docs` folder.
+Important documentation includes:
+
+- PROJECT_STANDARDS.md
+- ROADMAP.md
+- CHANGELOG.md
+- /docs
+- /workflows
 
 ---
 
-# Author
+# 🛣️ Project Philosophy
+
+AI Content Factory is being developed around three principles:
+
+- Automation
+
+Reduce repetitive manual work through reliable workflows.
+
+- Modularity
+
+Build specialized workflows that can be reused and extended.
+
+- Scalability
+
+Design the system so additional AI providers, content types, integrations, and publishing platforms can be added over time.
+
+---
+
+# 👨‍💻 Author
 
 ## Ogheneochuko Godswill
 
 AI Automation Engineer
 
-LinkedIn:
-https://www.linkedin.com/in/ogheneochuko-godswill
+AI Workflow Engineer • Automation • APIs • Cloud • DevOps
 
 GitHub:
 https://github.com/godswillmamus54-max
+
+LinkedIn:
+https://www.linkedin.com/in/ogheneochuko-godswill
 
 Email:
 godswillmamus54@gmail.com
