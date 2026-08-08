@@ -1,0 +1,41 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+# Credentials / private configuration
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+# Logs
+logs/*
+*.log
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+# Editor / IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+# Node / package artifacts
+node_modules/
+# Python
+__pycache__/
+*.py[cod]
+# Generated runtime output
+generated/*
+!generated/.gitkeep
+# Local databases
+*.sqlite
+*.sqlite3
+*.db
+# n8n local runtime data
+.n8n/
